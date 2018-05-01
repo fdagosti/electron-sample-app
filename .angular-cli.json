@@ -19,7 +19,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.scss",
+        "../node_modules/bulma/css/bulma.css",
+        "../node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css",
+        "../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css",
+        "../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css",
+        "../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -54,7 +59,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }
