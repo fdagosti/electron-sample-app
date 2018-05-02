@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ElectronService} from 'ngx-electron';
 
 @Component({
   selector: 'app-hero',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _electronService: ElectronService) { }
 
   ngOnInit() {
+  }
+
+  isnativeApp(){
+    return this._electronService.isElectronApp;
   }
 
 }

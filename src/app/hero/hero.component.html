@@ -1,6 +1,10 @@
 <section class="hero is-medium is-primary is-bold">
   <div class="hero-body">
     <div class="container">
+      <div class="notification is-danger" *ngIf="!isnativeApp()">
+        Warning, you are launching the map update app from a browser. This app will have limited functionalities (no USB or filesystem access...).
+        Instead, you can consider launching the native app which will have all the functionalities
+      </div>
       <h1 class="title">
         Map Update
       </h1>

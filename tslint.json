@@ -85,7 +85,7 @@
     ],
     "prefer-const": true,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "radix": true,
@@ -126,7 +126,7 @@
     "component-selector": [
       true,
       "element",
-      "app",
+      "mu",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
