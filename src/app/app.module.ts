@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { NgxElectronModule } from 'ngx-electron';
-
+import {NgxFsModule} from 'ngx-fs';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -42,6 +42,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgxElectronModule,
+    NgxFsModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false} // <-- debugging purposes only
