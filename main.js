@@ -48,4 +48,4 @@ app.on("activate", function(){
 const server = "https://hazel-server-fiqgyijyjy.now.sh";
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`
 
-autoUpdater.setFeedURL(feed)
+//autoUpdater.setFeedURL(feed)

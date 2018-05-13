@@ -1,12 +1,18 @@
 <p>This panel will display the content available on USB devices plugged on your machine</p>
 <mu-loading-spinner *ngIf="loading"></mu-loading-spinner>
 
+<div *ngIf="drive$ | async as drives">
+  <article class="message is-primary" *ngFor="let drive of drives" style="margin-bottom: 1rem">
+    <div class="message-header">
+      <p>{{drive.drive.description}}</p>
+    </div>
+    <div class="message-body">
+      <tree-root [nodes]="drive.content" [options]="options"></tree-root>
+    </div>
+  </article>
 
-<article class="message is-primary" *ngFor="let drive of drives | async" style="margin-bottom: 1rem">
-  <div class="message-header">
-    <p>{{drive.drive.description}}</p>
+  <div class="notification is-warning" *ngIf="drives.length === 0">
+    No USB drives connected to your system
   </div>
-  <div class="message-body">
-    <tree-root [nodes]="drive.content" [options]="options"></tree-root>
-  </div>
-</article>
+
+</div>
