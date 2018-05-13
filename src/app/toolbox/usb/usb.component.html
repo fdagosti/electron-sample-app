@@ -1,5 +1,19 @@
 <p>
   USB detection in progress....
 </p>
-<button class="button is-info" (click)="displaySomething()">show FS</button>
-<p></p>
+<div class="card" *ngFor="let drive of drives | async" style="margin-bottom: 1rem">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{drive.drive.description}}
+    </p>
+  </header>
+  <div class="card-content">
+    <tree-root [nodes]="drive.content" [options]="options"></tree-root>
+  </div>
+  <footer class="card-footer">
+    <a class="card-footer-item">Save</a>
+    <a class="card-footer-item">Edit</a>
+    <a class="card-footer-item">Delete</a>
+  </footer>
+</div>
+

@@ -16,6 +16,8 @@ import { UsbComponent } from './toolbox/usb/usb.component';
 import { MapDownloadComponent } from './toolbox/map-download/map-download.component';
 import {TomTomService} from './tom-tom.service';
 import { ToolboxSettingsComponent } from './toolbox/toolbox-settings/toolbox-settings.component';
+import {UsbService} from "./usb.service";
+import { TreeModule } from 'angular-tree-component';
 
 
 const appRoutes: Routes = [
@@ -43,12 +45,13 @@ const appRoutes: Routes = [
     HttpClientModule,
     NgxElectronModule,
     NgxFsModule,
+    TreeModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false} // <-- debugging purposes only
     ),
   ],
-  providers: [TomTomService],
+  providers: [TomTomService, UsbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
