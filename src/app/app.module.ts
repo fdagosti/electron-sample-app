@@ -18,6 +18,7 @@ import {TomTomService} from './tom-tom.service';
 import { ToolboxSettingsComponent } from './toolbox/toolbox-settings/toolbox-settings.component';
 import {UsbService} from "./usb.service";
 import { TreeModule } from 'angular-tree-component';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 
 
 const appRoutes: Routes = [
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     FooterComponent,
     UsbComponent,
     MapDownloadComponent,
-    ToolboxSettingsComponent
+    ToolboxSettingsComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

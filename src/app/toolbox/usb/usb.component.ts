@@ -16,6 +16,8 @@ export class UsbComponent implements OnInit {
 
   drives;
 
+  loading = true;
+
   nodes = [
     {
       id: 1,
@@ -51,7 +53,8 @@ export class UsbComponent implements OnInit {
 
 
   ngOnInit() {
-    this.drives = this.usbService.getUsbDevices();
+    this.drives = this.usbService.getUsbDevices()
+      .do(() => this.loading = false);
 
   }
 

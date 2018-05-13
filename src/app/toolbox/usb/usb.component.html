@@ -1,19 +1,12 @@
-<p>
-  USB detection in progress....
-</p>
-<div class="card" *ngFor="let drive of drives | async" style="margin-bottom: 1rem">
-  <header class="card-header">
-    <p class="card-header-title">
-      {{drive.drive.description}}
-    </p>
-  </header>
-  <div class="card-content">
+<p>This panel will display the content available on USB devices plugged on your machine</p>
+<mu-loading-spinner *ngIf="loading"></mu-loading-spinner>
+
+
+<article class="message is-primary" *ngFor="let drive of drives | async" style="margin-bottom: 1rem">
+  <div class="message-header">
+    <p>{{drive.drive.description}}</p>
+  </div>
+  <div class="message-body">
     <tree-root [nodes]="drive.content" [options]="options"></tree-root>
   </div>
-  <footer class="card-footer">
-    <a class="card-footer-item">Save</a>
-    <a class="card-footer-item">Edit</a>
-    <a class="card-footer-item">Delete</a>
-  </footer>
-</div>
-
+</article>
