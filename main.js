@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require("electron")
+const {app, BrowserWindow, autoUpdater} = require("electron")
 
 let win;
 
@@ -44,3 +44,8 @@ app.on("activate", function(){
   }
 })
 
+
+const server = "https://hazel-server-fiqgyijyjy.now.sh";
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`
+
+autoUpdater.setFeedURL(feed)
