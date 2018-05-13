@@ -11,7 +11,7 @@
     </div>
   </article>
 
-  <div class="notification is-warning" *ngIf="drives.length === 0">
+  <div class="notification is-warning" *ngIf="!loading && drives.length === 0">
     No USB drives connected to your system
   </div>
 

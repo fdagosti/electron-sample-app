@@ -1,10 +1,10 @@
 import {Injectable, NgZone} from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {FsService} from "ngx-fs";
+import {Observable} from 'rxjs/Observable';
+import {FsService} from 'ngx-fs';
 
 const w = window as any;
-const usb = w.require("usb");
-const drivelist = w.require("drivelist");
+const usb = w.require('usb');
+const drivelist = w.require('drivelist');
 
 @Injectable()
 export class UsbService {
@@ -26,7 +26,7 @@ export class UsbService {
       });
 
     }).then((drives: any) => {
-      const usbDrives = drives.filter(d => d.busType === "USB").map(d => this.readDrive(d));
+      const usbDrives = drives.filter(d => d.busType === 'USB').map(d => this.readDrive(d));
       return Promise.all(usbDrives);
     });
 
@@ -68,23 +68,23 @@ export class UsbService {
 
   getUsbDevices() {
     return Observable.create(observer => {
+      const zoneNext = (data) => this.zone.run(() => observer.next(data));
 
-      this.listAllUSBDevices().then(data => this.zone.run(() => observer.next(data)));
+      this.listAllUSBDevices().then(zoneNext);
 
-      usb.on("attach", () => {
-        // console.log("attach detected");
+      usb.on('attach', () => {
+        zoneNext("loading");
         setTimeout(() => {
-          this.listAllUSBDevices().then(data => this.zone.run(() => observer.next(data)));
+          this.listAllUSBDevices().then(zoneNext);
         }, 5000);
       });
 
-      usb.on("detach", () => {
-        // console.log("detach detected");
-        this.listAllUSBDevices().then(data => this.zone.run(() => observer.next(data)));
+      usb.on('detach', () => {
+        this.listAllUSBDevices().then(zoneNext);
       });
       return () => {
-        usb.removeAllListeners("attach");
-        usb.removeAllListeners("detach");
+        usb.removeAllListeners('attach');
+        usb.removeAllListeners('detach');
       };
     });
 

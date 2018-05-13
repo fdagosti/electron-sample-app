@@ -30,7 +30,10 @@ export class UsbComponent implements OnInit {
   ngOnInit() {
     this.drive$ = this.usbService.getUsbDevices()
       .catch(e => console.log('ex ', e))
-      .do(() => this.loading = false);
+      .map((d) => {
+        this.loading = d === 'loading' ? true : false;
+        return this.loading ? [] : d;
+      });
 
   }
 
